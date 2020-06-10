@@ -25,6 +25,17 @@ export default class Main extends Lightning.Component{
      * and hand over the movies
      */
 
+     set movies(v) {
+         // Don't do this... we are profesionals!
+        this.children = [{
+            List: {
+                x: 100, y: 560, zIndex: 3,
+                type: List,
+                movies: v
+            }
+        }]
+     }
+
     _focus() {
         this.patch({
             Lists: {

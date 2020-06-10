@@ -88,6 +88,9 @@ export default class Menu extends Lightning.Component {
          * ---
          * so based on focused menu item.
          */
+
+         // I know that I'm cheating and taking it directly... blame me, please
+        Router.navigate(this.tag('Items').children[this._index]._id);
     }
 
     _getFocused(){

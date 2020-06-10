@@ -61,9 +61,30 @@ export default class List extends Lightning.Component {
         this.setIndex(Math.min(++this._index, this.items.length - 1));
     }
 
-    _handleKey(event) {
-        // The user is pressing any key that is not mapped, so we need to check and redraw
-        this.setIndex(this._index);
+    _focusAnimation() {
+        // This will handle the focus on the listanimation
+        this._focus.patch({
+            smooth: {
+                x: -35,
+                y: 115,
+                texture: lng.Tools.getRoundRect(240, 350, 10, 5, 0xCC30538a, false, 0xff00ffff)
+            }
+        });
+    }
+
+    _loosefocusAnimation() {
+        // This will handle when you loose the focus on the list animation
+        this._focus.patch({
+            smooth: {
+                x: -15,
+                y: 160,
+                texture: lng.Tools.getRoundRect(200, 285, 15, 5, 0xCC30538a, false, 0xff00ffff)
+            }
+        })
+    }
+
+    _unfocus() {
+        this._loosefocusAnimation();
     }
 
     /**
@@ -148,7 +169,7 @@ export default class List extends Lightning.Component {
         // item has all the data sended by the item so, when fired we can update the template ;)
         // So, if you want to use the data stored by the this._movie "private" property
         // comment everything below ;)
-        
+
         // Set texts
         if (item.title !== undefined) {
             this._title.text = item.title;
@@ -159,5 +180,8 @@ export default class List extends Lightning.Component {
         } else {
             this._genre.text = 'No genre found';
         }
+
+        // And finish doing the focus animation
+        this._focusAnimation();
     }
 }

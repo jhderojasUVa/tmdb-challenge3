@@ -27,7 +27,7 @@ export default () =>{
      *
      * You also need to add the proper data-provider
      */
-
+    Router.route('tv', Main); // I use this because on the widget/Menu you use the word tv
 
     Router.start();
 }

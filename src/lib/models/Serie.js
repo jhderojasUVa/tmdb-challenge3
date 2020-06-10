@@ -1,15 +1,15 @@
-export default class Movie {
-    constructor(obj, genres){
-        this._adult = obj.adult;
+export default class Serie {
+    constructor(obj, genres) {
+        this._adult = obj.adult || false;
         this._backdrop_path = obj.backdrop_path;
         this._id = obj.id;
         this._original_language = obj.original_language;
         this._overview = obj.overview;
         this._popularity = obj.popularity;
         this._poster_path = obj.poster_path;
-        this._release_date = obj.release_date;
-        this._title = obj.title;
-        this._video = obj.video;
+        this._release_date = obj.first_air_date;
+        this._title = obj.original_name;
+        this._video = obj.video || '';
         this._vote_average = obj.vote_average;
         this._vote_count = obj.vote_count;
 
