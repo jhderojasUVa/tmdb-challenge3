@@ -17,9 +17,22 @@ export const getMovies = async()=> {
     const movies = await get(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`);
     const {results = []} = movies;
 
+    const genres = {
+        28: 'sci-fi',
+        878: 'horror',
+        53: 'space',
+        18: 'crime',
+        35: 'humor',
+        10751: 'animated',
+        12: 'marvel',
+        27: 'something',
+        37: 'dark',
+        878: 'run'
+    }
+
     if(results.length){
         return results.map((data)=>{
-            return new Movie(data);
+            return new Movie(data, genres);
         });
     }
 

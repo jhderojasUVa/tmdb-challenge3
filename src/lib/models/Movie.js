@@ -1,5 +1,5 @@
 export default class Movie {
-    constructor(obj,genres){
+    constructor(obj, genres){
         this._adult = obj.adult;
         this._backdrop_path = obj.backdrop_path;
         this._id = obj.id;
@@ -12,6 +12,11 @@ export default class Movie {
         this._video = obj.video;
         this._vote_average = obj.vote_average;
         this._vote_count = obj.vote_count;
+
+        // this._genres = obj.genre_ids;
+        this._genres = obj.genre_ids.map((element) => {
+            return genres[element] || 'I don\'t know'
+        }).join(' | ');
     }
 
     get adult() {

@@ -132,6 +132,9 @@ export default class Item extends Lightning.Component {
         });
 
         this._focusAnimation.start();
+
+        // I love fireAncestors because I always forger where pone component/object is a child of
+        this.fireAncestors('$metadaHasChanged', this._item);
     }
 
     _unfocus() {
